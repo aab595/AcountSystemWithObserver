@@ -1,0 +1,26 @@
+{
+  "name": "acountsystemwithobserver",
+  "version": "1.0.0",
+  "description": "This is a simple project that us to make practice all knowledge we already get in Observer Design Pattern",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel ./src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aab595/AcountSystemWithObserver.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aab595/AcountSystemWithObserver/issues"
+  },
+  "homepage": "https://github.com/aab595/AcountSystemWithObserver#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  }
+}
