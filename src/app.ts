@@ -5,11 +5,11 @@ import { TotalSolde } from "./classes/TotalSolde";
 import { Transaction } from "./classes/Transaction";
 
 
-const addBtn = document.querySelector('#addBtn') as HTMLButtonElement
-let transType = document.querySelector('#transType') as HTMLSelectElement
-let transAmount = document.querySelector('#transAmount') as HTMLInputElement
-let transWho = document.querySelector('#transWho') as HTMLInputElement
-let transDetail = document.querySelector('#transDetail') as HTMLInputElement
+const addBtn      = document.querySelector('#addBtn') as HTMLButtonElement
+let   transType   = document.querySelector('#transType') as HTMLSelectElement
+let   transAmount = document.querySelector('#transAmount') as HTMLInputElement
+let   transWho    = document.querySelector('#transWho') as HTMLInputElement
+let   transDetail = document.querySelector('#transDetail') as HTMLInputElement
 
 addBtn.addEventListener('click', (e: Event) => {
     if (transType.value && transAmount.value && transWho.value && transDetail.value) {
