@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
 *
 {
     margin: 0;
@@ -8,7 +10,8 @@ body
 {
     width: 100%;
     height: 100vh;
-    background: #c2c2c2;
+    background: #0b002b;
+    font-family: 'Montserrat', sans-serif;
 }
 .container
 {
@@ -18,28 +21,104 @@ body
 .form-content
 {
     width: 100%;
-    background: rgb(105, 114, 238);
+    background: #fff;
+    box-shadow: inset 0px 4px 5px rgba(0, 0, 0, 0.25);
     padding: 25px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
+}
+.form-content .form-group 
+{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    gap: 5px;
+}
+
+.form-content .form-group label 
+{
+    font-weight: 700;
+    opacity: .7;
+}
+.form-content .form-control
+{
+    height: 40px;
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 2px solid #c2c2c2;
+    border-radius: 5px;
+    outline: none;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .9em;
+    font-weight: 400;
+}
+.form-content .form-control:hover,
+.form-content .form-control:focus
+{
+    border: 2px solid #2F80ED;
+    background-color: #fff;
+}
+.form-content button
+{
+    height: 40px;
+    width: 40px;
+    align-self: flex-end;
+    margin-bottom: 10px;
+    font-size: 2em;
+    border-radius: 5px;
+    font-family: 'Monserrat', sans-serif;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    background-color: #2F80ED;
+    color: white;
+    cursor: pointer;
 }
 .content
 {
     width: 100%;
     display: flex;
-    gap: 25px;
-    padding: 15px;
+    gap: 50px;
+    padding: 25px;
 }
 .main
 {
     order: 2;
     background-color: #fff;
     width: 100%;
+    border-radius: 8px;
+    padding: 15px;
+}
+.main h3
+{
+    text-align: center;
+    font-size: 1.1em;
+    opacity: .9;
+    margin-bottom: 15px;
+    text-decoration: underline 2px solid;
+    color: #2F80ED;
+}
+.main ul .trans-li
+{
+    list-style: none;
+    width: 100%;
+    background: #ccc;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    padding: 10px;
+    color: #fff;
+}
+.main ul .trans-li p:first-child
+{
+    font-weight: 600;
 }
 .section-left
 {
     order: 1;
-    width: 50%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -47,15 +126,62 @@ body
 .section-left .solde
 {
     background-color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    padding: 5px;
+}
+.section-left .solde h3
+{
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-bottom: 7px;
+    opacity: .9;
+}
+.section-left .solde p
+{
+    font-weight: 600;
+    color: green;
 }
 .section-left .totalTrans
 {
     background-color: #fff;
+    border-radius: 8px;
+    padding: 5px;
+    text-align: center;
+}
+.section-left .totalTrans h3
+{
+    font-size: 1.1em;
+    opacity: .9;
+}
+.table
+{
+    table-layout: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+.table td, .table th
+{
+    text-align: center;
+    padding: 7px;
+    font-weight: 600;
+}
+.table thead tr 
+{
+    border-bottom: 1px solid #ccc;
 }
 .section-right
 {
     order: 3;
-    width: 70%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -63,8 +189,28 @@ body
 .section-right .state
 {
     background-color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    padding: 5px;
+}
+.section-right .state h3
+{
+    text-align: center;
+    font-size: 1.1em;
+    opacity: .9;
+    margin-bottom: 15px;
 }
 .section-right .personal
 {
     background-color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    padding: 5px;
+}
+.section-right .personal h3
+{
+    text-align: center;
+    font-size: 1.1em;
+    opacity: .9;
+    margin-bottom: 15px;
 }

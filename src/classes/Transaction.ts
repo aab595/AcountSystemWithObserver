@@ -3,9 +3,30 @@ import { ISubject } from "../interfaces/ISubject";
 
 export class Transaction implements ISubject {
     private transaction: IObserver[] = []
+    static totalAmount: number = 0 // class attribute
+    static totalDebit: number = 0 // class attribute
+    static totalCredit: number = 0 // class attribute
 
     constructor(private type: string, private amount: number, private who: string, private detail: string) {
-        //
+        if (this.type === "debit") {
+            Transaction.totalAmount -= this.amount
+            Transaction.totalDebit++
+        } else {
+            Transaction.totalAmount += this.amount
+            Transaction.totalCredit++
+        }
+    }
+
+    getTotalAmount() {
+        return Transaction.totalAmount
+    }
+
+    getTotalDebit() {
+        return Transaction.totalDebit
+    }
+    
+    getTotalCredit() {
+        return Transaction.totalCredit
     }
 
     getType() {
@@ -46,7 +67,7 @@ export class Transaction implements ISubject {
 
     subscribe(obs: IObserver) {
         this.transaction.push(obs)
-        this.notify()
+        // this.notify()
     }
 
     unsubscribe(obs: IObserver) {
