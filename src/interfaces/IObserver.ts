@@ -1,3 +1,3 @@
 export interface IObserver {
-    update(data: object)
+    update(data: object[])
 }

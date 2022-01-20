@@ -1,16 +1,29 @@
+import { Caisse, Transaction } from "./classes/Caisse";
+import { Infos } from "./classes/Infos";
 import { ListTrans } from "./classes/ListTrans";
 import { NbTrans } from "./classes/NbTrans";
-import { PersonalInfo } from "./classes/PersonalInfo";
-import { TotalSolde } from "./classes/TotalSolde";
-import { Transaction } from "./classes/Transaction";
+import { Solde } from "./classes/Solde";
 
-
+// DOM variables
 const addBtn      = document.querySelector('#addBtn') as HTMLButtonElement
 let   transType   = document.querySelector('#transType') as HTMLSelectElement
 let   transAmount = document.querySelector('#transAmount') as HTMLInputElement
 let   transWho    = document.querySelector('#transWho') as HTMLInputElement
 let   transDetail = document.querySelector('#transDetail') as HTMLInputElement
 
+// Observers object
+const caisse    = new Caisse(5000)
+const solde     = new Solde()
+const nbTrans   = new NbTrans()
+const listTrans = new ListTrans()
+const infos = new Infos()
+// Subscribe obervers
+caisse.subscribe(solde)
+caisse.subscribe(nbTrans)
+caisse.subscribe(listTrans)
+caisse.subscribe(infos)
+
+// Add transaction while clicking on add button
 addBtn.addEventListener('click', (e: Event) => {
     if (transType.value && transAmount.value && transWho.value && transDetail.value) {
         const transaction = new Transaction(
@@ -19,16 +32,7 @@ addBtn.addEventListener('click', (e: Event) => {
             transWho.value,
             transDetail.value
         )
-        const solde        = new TotalSolde(transaction)
-        const nbTrans      = new NbTrans(transaction)
-        const listTrans    = new ListTrans(transaction)
-        const personalInfo = new PersonalInfo(transaction)
-        transaction.subscribe(solde)
-        transaction.subscribe(nbTrans)
-        transaction.subscribe(listTrans)
-        transaction.subscribe(personalInfo)
-        console.log(Transaction.totalAmount);
-        
+        caisse.addTransaction(transaction)
     } else {
         console.log("All fields are required");
     }
