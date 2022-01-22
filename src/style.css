@@ -218,3 +218,36 @@ body
     opacity: .9;
     margin-bottom: 15px;
 }
+/* RESPONSIVE DESING */
+@media screen and (max-width: 820px) {
+    .content
+    {
+        flex-direction: column;
+    }
+    .section-left
+    {
+        flex-direction: row;
+        width: 100%;
+    }
+    .section-left .solde
+    {
+        width: 30%;
+    }
+    .section-left .totalTrans
+    {
+        width: 70%;
+    }
+    .section-right
+    {
+        flex-direction: row;
+        width: 100%;
+    }
+    .section-right .state
+    {
+        width: 30%;
+    }
+    .section-right .personal
+    {
+        width: 70%;
+    }
+}
