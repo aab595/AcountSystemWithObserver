@@ -12,7 +12,7 @@ let   transWho    = document.querySelector('#transWho') as HTMLInputElement
 let   transDetail = document.querySelector('#transDetail') as HTMLInputElement
 
 // Observers object
-const caisse    = new Caisse(5000)
+const caisse    = new Caisse(20000)
 const solde     = new Solde()
 const nbTrans   = new NbTrans()
 const listTrans = new ListTrans()

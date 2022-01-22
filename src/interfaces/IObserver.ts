@@ -1,3 +1,5 @@
+import { Caisse } from "../classes/Caisse";
+
 export interface IObserver {
-    update(data: object[])
+    update(data: Caisse)
 }

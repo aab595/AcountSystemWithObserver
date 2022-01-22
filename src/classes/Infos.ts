@@ -1,46 +1,47 @@
 import { IObserver } from "../interfaces/IObserver";
+import { Caisse, Transaction } from "./Caisse";
 
 export class Infos implements IObserver {
-    constructor() {}
-
-    filterByType(data: object[], name: string) {
-        let totalDebit = 0
-        let totalCredit = 0
-        for (const trans of data) {
-            if (trans['type'] === 'debit' && trans['who'] === name) {
-               totalDebit += trans['amount']
-            }
-            if (trans['type'] === 'credit' && trans['who'] === name) {
-                totalCredit += trans['amount']
-            }
-        }
-        return {
-            _name: name,
-            _totalDebit: totalDebit,
-            _totalCredit: totalCredit
-        }
+    private htmlTbody: HTMLTableSectionElement
+    constructor() {
+        this.htmlTbody = document.querySelector('#personal-info')
     }
 
-    update(data: object[]) {
-        let arraOfName = data.map(res => {
-            return res['who']
-        })
-        let arraOfNameFilter = Array.from(new Set(arraOfName))
-        arraOfNameFilter.forEach(name => {
-            const res = this.filterByType(data, name)
-            // console.log(res._name, res._totalCredit, res._totalDebit);
-            const personalTbody      = document.querySelector('#personal') as HTMLTableSectionElement
-            const tr                 = document.createElement('tr')
-            const tdName             = document.createElement('td')
-            const tdDebit            = document.createElement('td')
-            const tdCredit           = document.createElement('td')
-                  tdName.innerText   = res._name
-                  tdDebit.innerText  = res._totalDebit.toString()
-                  tdCredit.innerText = res._totalCredit.toString()
-            tr.appendChild(tdName)
-            tr.appendChild(tdDebit)
-            tr.appendChild(tdCredit)
-            personalTbody.appendChild(tr)
-        })
+    update(data: Caisse) {
+        let result = []
+        for (const trans of data.getTransaction()) {
+            let nb = result.filter(e => e.name === trans.getWho()).length
+            if (nb === 0) {
+                let employee = {
+                    name: trans.getWho(),
+                    debit: (trans.getType() === 'debit') ? trans.getAmount() : 0,
+                    credit: (trans.getType() === 'credit') ? trans.getAmount() : 0
+                }
+                result.push(employee)
+            } else {
+                let idx = result.findIndex(elem => elem.name === trans.getWho())
+                if (trans.getType() === 'debit') {
+                    result[idx].debit += trans.getAmount()
+                } else {
+                    result[idx].credit += trans.getAmount()
+                }
+            }
+        }
+
+        this.htmlTbody.innerHTML = ""
+
+        for (const res of result) {
+            const tr = document.createElement('tr')
+            const tdName = document.createElement('td')
+            const tdDebit = document.createElement('td')
+            const tdCredit = document.createElement('td')
+            tdName.innerText = res.name
+            tdDebit.innerText = res.debit.toString()
+            tdCredit.innerText = res.credit.toString()
+            tr.append(tdName)
+            tr.append(tdDebit)
+            tr.append(tdCredit)
+            this.htmlTbody.append(tr)
+        }
     }
 }

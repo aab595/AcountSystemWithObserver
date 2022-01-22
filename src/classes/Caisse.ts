@@ -5,24 +5,55 @@ export class Caisse implements ISubject {
     private observers: IObserver[] = []
     private debitCounter: number = 0
     private creditCounter: number = 0
-    private results: object[] = []
+    private totalDebit: number = 0
+    private totalCredit: number = 0
+    private transactions: Transaction[] = []
 
-    constructor(
-        private solde: number, 
-        private transactions: Transaction[] = []
-    ) {
-        this.notify()
+    constructor(private solde: number) {
+        //
     }
 
     addTransaction(obj: Transaction) {
         this.transactions.push(obj)
-        // console.log("Trans : ", this.transactions);
+        if (obj.getType() === 'debit') {
+            this.solde -= obj.getAmount()
+            this.debitCounter++
+            this.totalDebit += obj.getAmount()
+        } else {
+            this.solde += obj.getAmount()
+            this.creditCounter++
+            this.totalCredit += obj.getAmount()
+        }
         this.notify()
+    }
+
+    getSolde() {
+        return this.solde
+    }
+
+    getDebitCounter() {
+        return this.debitCounter
+    }
+
+    getCreditCounter() {
+        return this.creditCounter
+    }
+
+    getTotalDebit() {
+        return this.totalDebit
+    }
+
+    getTotalCredit() {
+        return this.totalCredit
+    }
+
+    getTransaction() {
+        return this.transactions
     }
 
     subscribe(obs: IObserver) {
         this.observers.push(obs)
-        this.notify()
+        obs.update(this)
     }
 
     unsubscribe(obs: IObserver) {
@@ -31,29 +62,29 @@ export class Caisse implements ISubject {
 
     notify() {
         for (const elem of this.observers) {
-            elem.update(this.transactions)
+            elem.update(this)
         }
     }
 }
 
 export class Transaction {
     constructor(
-        private type: string, 
-        private amount: number, 
-        private who: string, 
-        private detail: string
+        private _type: string, 
+        private _amount: number, 
+        private _who: string, 
+        private _reason: string
     ) {}
 
     getType() {
-        return this.type
+        return this._type
     }
     getAmount() {
-        return this.amount
+        return this._amount
     }
     getWho() {
-        return this.who
+        return this._who
     }
-    getDetail() {
-        return this.detail
+    getReason() {
+        return this._reason
     }
 }
