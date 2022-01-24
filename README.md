@@ -13,3 +13,5 @@ To test this app you have to :
 * After that, go to `AcountSystemWithObserver` directory using `cd` command line
 * install all dependencies with ```npm i``` command
 * run the app with ```npm start```
+
+Click to this link https://account-system.herokuapp.com/ to get overview
