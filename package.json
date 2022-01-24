@@ -4,7 +4,8 @@
   "description": "This is a simple project that us to make practice all knowledge we already get in Observer Design Pattern",
   "main": "index.js",
   "scripts": {
-    "start": "parcel ./src/index.html"
+    "start": "node server.js",
+    "build": "parcel build ./src/index.html"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,8 @@
   },
   "homepage": "https://github.com/aab595/AcountSystemWithObserver#readme",
   "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.17.2",
     "parcel-bundler": "^1.12.5"
   },
   "devDependencies": {
