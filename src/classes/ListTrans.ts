@@ -19,7 +19,7 @@ export class ListTrans implements IObserver {
             }
             li.className    = "trans-li"
             pHead.innerText = element.getType() === "debit" ? "Débit" : "Crédit"
-            pBody.innerText = `${element.getAmount()} ont été déposé par ${element.getWho()} suite à ${element.getReason()}`
+            pBody.innerText = `${element.getAmount()} ont été ${element.getType() === "debit" ? "déposé" : "retiré"} par ${element.getWho()} suite à ${element.getReason()}`
             li.appendChild(pHead)
             li.appendChild(pBody)
         });
