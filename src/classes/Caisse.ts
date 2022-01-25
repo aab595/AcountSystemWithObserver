@@ -16,11 +16,11 @@ export class Caisse implements ISubject {
     addTransaction(obj: Transaction) {
         this.transactions.push(obj)
         if (obj.getType() === 'debit') {
-            this.solde -= obj.getAmount()
+            this.solde += obj.getAmount()
             this.debitCounter++
             this.totalDebit += obj.getAmount()
         } else {
-            this.solde += obj.getAmount()
+            this.solde -= obj.getAmount()
             this.creditCounter++
             this.totalCredit += obj.getAmount()
         }

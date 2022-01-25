@@ -12,7 +12,7 @@ export class Solde implements IObserver {
     update(data: Caisse) {
         // SOLDE
         this.htmlSolde.innerText = data.getSolde().toString()
-        this.htmlSolde.style.color = (data.getSolde() < 0) ? "red" : "green"
+        this.htmlSolde.style.color = (data.getSolde() > 0) ? "green" : "red"
         // STATE
         this.htmlState.style.width = "70%"
         this.htmlState.style.margin = "0 auto"
